@@ -16,7 +16,7 @@ public class Create_DLP_Job implements BackgroundFunction<GCSEvent> {
     private static final Logger logger = Logger.getLogger(Create_DLP_Job.class.getName());
     @Override
     public void accept(GCSEvent event, Context context) throws IOException {
-        logger.info("Processing file: " + event.bucket);
+        //logger.info("Processing file: " + event.bucket);
         /*
                 # ----------------------------
                 #  User-configurable Constants
@@ -45,21 +45,19 @@ public class Create_DLP_Job implements BackgroundFunction<GCSEvent> {
                 # ----------------------------------
 
          */
-//        try(DlpServiceClient dlp = DlpServiceClient.create()){
-//            CloudStorageOptions cloudStorageOptions =
-//                    CloudStorageOptions.newBuilder()
-//                            .setFileSet(CloudStorageOptions.FileSet.newBuilder()
-//                                    .setUrl()
-//                                    .build())
-//                            .build();
-//        }
-        cdj_helper(logger);
-    }
+        String gcsUri = String.format("gs://%s/%s",event.bucket,event.name);
+        logger.info(gcsUri);
+        try(DlpServiceClient dlp = DlpServiceClient.create()){
 
-    public void cdj_helper(final Logger logger){
-        logger.info("Made it here");
-    }
+            CloudStorageOptions cloudStorageOptions =
+                    CloudStorageOptions.newBuilder()
+                            .setFileSet(CloudStorageOptions.FileSet.newBuilder()
+                                    .setUrl(gcsUri)
+                                    .build())
+                            .build();
+        }
 
+    }
     public static class GCSEvent {
         String bucket;
         String name;
