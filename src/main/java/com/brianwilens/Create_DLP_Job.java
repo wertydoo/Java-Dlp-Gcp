@@ -46,7 +46,7 @@ public class Create_DLP_Job implements BackgroundFunction<GCSEvent> {
 
          */
         String gcsUri = String.format("gs://%s/%s",event.bucket,event.name);
-        logger.info(gcsUri);
+        logger.info(context.toString());
         try(DlpServiceClient dlp = DlpServiceClient.create()){
 
             CloudStorageOptions cloudStorageOptions =
