@@ -8,14 +8,12 @@ import com.google.cloud.functions.BackgroundFunction;
 import com.google.cloud.functions.Context;
 import com.google.privacy.dlp.v2.CloudStorageOptions;
 import com.google.privacy.dlp.v2.InfoType;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import java.io.IOException;
 import java.util.List;
+import java.util.logging.Logger;
 
 public class Create_DLP_Job implements BackgroundFunction<GCSEvent> {
-    private static final Logger logger = LoggerFactory.getLogger(Create_DLP_Job.class.getName());
+    private static final Logger logger = Logger.getLogger(Create_DLP_Job.class.getName());
     @Override
     public void accept(GCSEvent event, Context context) throws IOException {
         logger.info("Processing file: " + event.bucket);
