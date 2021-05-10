@@ -1,0 +1,9 @@
+steps:
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    args:
+      - gcloud
+      - functions
+      - deploy
+      - test-cloud-func
+      - --region=us-central1
+      - --source=.
