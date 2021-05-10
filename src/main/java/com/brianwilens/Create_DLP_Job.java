@@ -56,14 +56,6 @@ public class Create_DLP_Job implements BackgroundFunction<GCSEvent> {
 
     }
 
-    public void create_DLP_Job(GCSEvent event) {
-        // Get the target file from the landing bucket
-        String fileName = event.name;
-        logger.info(String.format("Function triggered for file %s", fileName));
-        // Prepare infoTypes object
-        //List<InfoType> infoTypes =
-    }
-
     public static class GCSEvent {
         String bucket;
         String name;
