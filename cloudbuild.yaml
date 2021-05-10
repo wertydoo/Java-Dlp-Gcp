@@ -7,3 +7,5 @@ steps:
       - test-cloud-func
       - --region=us-central1
       - --source=.
+      - --runtime=java11
+      - --memory=512MB

@@ -53,7 +53,11 @@ public class Create_DLP_Job implements BackgroundFunction<GCSEvent> {
 //                                    .build())
 //                            .build();
 //        }
+        cdj_helper(logger);
+    }
 
+    public void cdj_helper(final Logger logger){
+        logger.info("Made it here");
     }
 
     public static class GCSEvent {
