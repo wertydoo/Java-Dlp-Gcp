@@ -45,8 +45,12 @@ public class Create_DLP_Job implements BackgroundFunction<GCSEvent> {
                 # ----------------------------------
 
          */
+        //TODO: Populate projectId dynamically?
+        String projectId = "bw-rampup-sandbox";
         String gcsUri = String.format("gs://%s/%s",event.bucket,event.name);
-        logger.info(context.toString());
+        String topicId = "uploader-classify-topic";
+
+        logger.info(gcsUri);
         try(DlpServiceClient dlp = DlpServiceClient.create()){
 
             CloudStorageOptions cloudStorageOptions =
